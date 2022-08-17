@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerBody;
     public float speed = 1000;
     private int score = 0;
+    public int health = 5;
 
     // triggered for Toss a coin for your Witcher
     void OnTriggerEnter(Collider other)
@@ -16,6 +17,12 @@ public class PlayerController : MonoBehaviour
             score++;
             Debug.Log("Score: " + score);
             Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Trap")
+        {
+            health--;
+            Debug.Log("Health: " + health);
         }
     }
 
