@@ -6,6 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody playerBody;
     public float speed = 1000;
+    private int score = 0;
+
+    // triggered for Toss a coin for your Witcher
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pickup")
+        {
+            score++;
+            Debug.Log("Score: " + score);
+            Destroy(other.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
