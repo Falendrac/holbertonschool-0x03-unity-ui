@@ -44,7 +44,16 @@ public class PlayerController : MonoBehaviour
     void SetWin()
     {
         winLoseImg.color = Color.green;
+        winLoseText.color = Color.black;
         winLoseText.text = "You Win!";
+        winLoseImg.gameObject.SetActive(true);
+    }
+
+    void SetLose()
+    {
+        winLoseImg.color = Color.red;
+        winLoseText.color = Color.white;
+        winLoseText.text = "Game Over!";
         winLoseImg.gameObject.SetActive(true);
     }
 
@@ -79,7 +88,8 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Debug.Log("Game Over!");
+            // Debug.Log("Game Over!");
+            SetLose();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
