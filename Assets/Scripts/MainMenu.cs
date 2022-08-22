@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    // Quit the game when the button quit is trigger
+    public void QuitMaze()
+    {
+        Application.Quit();
+        Debug.Log("Quit Game");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
