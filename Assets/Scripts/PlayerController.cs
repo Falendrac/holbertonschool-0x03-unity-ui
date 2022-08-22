@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     public int health = 5;
     public Text scoreText;
+    public Text healthText;
 
     // triggered for Toss a coin for your Witcher
     void OnTriggerEnter(Collider other)
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Trap")
         {
             health--;
-            Debug.Log("Health: " + health);
+            // Debug.Log("Health: " + health);
+            SetHealthText();
         }
 
         if (other.tag == "Goal")
@@ -35,10 +37,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Set ScoreText
+    // Set ScoreText with the current player score
     void SetScoreText()
     {
         scoreText.text = "Score: " + score;
+    }
+
+    // Set HealthText with the current player health
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health;
     }
 
     // Start is called before the first frame update
