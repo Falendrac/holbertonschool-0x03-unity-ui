@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1000;
     private int score = 0;
     public int health = 5;
+    public Text scoreText;
 
     // triggered for Toss a coin for your Witcher
     void OnTriggerEnter(Collider other)
@@ -16,7 +18,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pickup")
         {
             score++;
-            Debug.Log("Score: " + score);
+            // Debug.Log("Score: " + score);
+            SetScoreText();
             Destroy(other.gameObject);
         }
 
@@ -30,6 +33,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
         }
+    }
+
+    // Set ScoreText
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score;
     }
 
     // Start is called before the first frame update
