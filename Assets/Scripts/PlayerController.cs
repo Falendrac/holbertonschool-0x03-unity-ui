@@ -47,14 +47,17 @@ public class PlayerController : MonoBehaviour
         winLoseText.color = Color.black;
         winLoseText.text = "You Win!";
         winLoseImg.gameObject.SetActive(true);
+        StartCoroutine(LoadScene(3));
     }
 
+    // Set the lose when player have no health
     void SetLose()
     {
         winLoseImg.color = Color.red;
         winLoseText.color = Color.white;
         winLoseText.text = "Game Over!";
         winLoseImg.gameObject.SetActive(true);
+        StartCoroutine(LoadScene(3));
     }
 
     // Set ScoreText with the current player score
@@ -67,6 +70,13 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = "Health: " + health;
+    }
+
+    // Coroutine when player loose or win
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Start is called before the first frame update
@@ -90,7 +100,6 @@ public class PlayerController : MonoBehaviour
         {
             // Debug.Log("Game Over!");
             SetLose();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
