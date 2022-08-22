@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public int health = 5;
     public Text scoreText;
     public Text healthText;
+    public Image winLoseImg;
+    public Text winLoseText;
 
     // triggered for Toss a coin for your Witcher
     void OnTriggerEnter(Collider other)
@@ -33,8 +35,17 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Goal")
         {
-            Debug.Log("You win!");
+            SetWin();
+            // Debug.Log("You win!");
         }
+    }
+
+    // Set the Win when goal is trigger
+    void SetWin()
+    {
+        winLoseImg.color = Color.green;
+        winLoseText.text = "You Win!";
+        winLoseImg.gameObject.SetActive(true);
     }
 
     // Set ScoreText with the current player score
