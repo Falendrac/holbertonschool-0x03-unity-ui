@@ -101,5 +101,10 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Game Over!");
             SetLose();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
     }
 }
